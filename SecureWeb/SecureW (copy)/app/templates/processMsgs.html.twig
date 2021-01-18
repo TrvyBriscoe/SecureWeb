@@ -1,0 +1,32 @@
+{% extends 'banner.html.twig' %}
+{% block content %}
+  <div id="lg-form-container">
+  <h2>{{ page_heading_2 }}</h2>
+  <p>{{ page_text }}</p>
+    <h3>SMS Message</h3>
+    <table border="1">
+      <tbody>
+      <tr>
+        <th>Source MSISDN</th>
+        <th>Destination</th>
+        <th>Time Received</th>
+        <th>Bearer</th>
+        <th>Reference</th>
+        <th>Message</th>
+      </tr>
+      {% for processed_message in processed_messages %}
+      <tr>
+        <td>{{ processed_message.SOURCEMSISDN }}</td>
+        <td>{{ processed_message.DESTINATIONMSISDN }}</td>
+        <td>{{ processed_message.RECEIVEDTIME }}</td>
+        <td>{{ processed_message.BEARER }}</td>
+        <td>{{ processed_message.MESSAGEREF}}</td>
+        <td>{{ processed_message.MESSAGE }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="curr_page"><a href="{{ landing_page }}">Home</a></p>
+  </div>
+{% endblock %}
